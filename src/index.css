@@ -3,6 +3,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
+  letter-spacing: 0.05vw;
 }
 
 button {
@@ -16,12 +17,41 @@ button {
   cursor: pointer;
 }
 
+label {
+  width: 100%;
+  display: inline-block;
+  font-size: 0.85vw;
+  margin-bottom: 0.45vw;
+}
+
+input[type=text],
+input[type=email],
+input[type=password] {
+  width: 100%;
+  padding: 0.75vw;
+  border: 1px solid #E2E8F0;
+  border-radius: 0.5vw;
+  margin-bottom: 1vw;
+}
+
+::placeholder {
+  color: rgba(160, 174, 192, 1);
+}
+
+input:focus {
+  outline: none;
+}
+
 .bg-teal {
   background: #4FD1C5;
 }
 
 .color-white {
   color: white;
+}
+
+.color-gray-700 {
+  color: rgba(45, 55, 72, 1);
 }
 
 .page-container {
