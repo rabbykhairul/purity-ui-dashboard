@@ -1,4 +1,6 @@
 import React from "react";
+import { BsFacebook, BsApple, BsGoogle } from "react-icons/bs";
+
 import Button from "../commons/Button";
 import Input from "../commons/Input";
 
@@ -14,6 +16,17 @@ const SignUpForm = () => {
     return (
       <>
       <h2 className="color-gray-700">{FORM_TITLE}</h2>
+      <div className="registration-options-container">
+        <Button className="btn-alternate-registration color-gray-700">
+          <BsFacebook />
+        </Button>
+        <Button className="btn-alternate-registration color-gray-700">
+          <BsApple />
+        </Button>
+        <Button className="btn-alternate-registration color-gray-700">
+          <BsGoogle />
+        </Button>
+      </div>
       <p className="color-gray-700">or</p>
       </>
     )
