@@ -5,6 +5,21 @@
   font-family: 'Lato', sans-serif;
 }
 
+button {
+  font-size: 0.75vw;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 0.5vw;
+  padding: 0.65vw;
+  width: 100%;
+  cursor: pointer;
+}
+
+.bg-teal {
+  background: #4FD1C5;
+}
+
 .color-white {
   color: white;
 }
