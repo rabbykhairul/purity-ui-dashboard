@@ -3,3 +3,25 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.page-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.sign-up-screen {
+  padding: 1.55vw 1.55vw 2vw 1.55vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sign-up-screen .welcome-note-box {
+  width: 100%;
+  height: 47.5%;
+  background-color: gold;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0.85vw;
+}
