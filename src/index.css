@@ -28,10 +28,10 @@ input[type=text],
 input[type=email],
 input[type=password] {
   width: 100%;
-  padding: 0.75vw;
+  padding: 0.65vw 0.75vw;
   border: 1px solid #E2E8F0;
   border-radius: 0.5vw;
-  margin-bottom: 1vw;
+  margin-bottom: 0.8vw;
 }
 
 ::placeholder {
@@ -103,4 +103,16 @@ input:focus {
   border-radius: 1vw;
   left: 40.5%;
   top: 28%;
+}
+
+.sign-up-form h2 {
+  font-size: 0.9vw;
+  text-align: center;
+  width: 100%;
+}
+
+.sign-up-form p {
+  font-size: 0.85vw;
+  text-align: center;
+  width: 100%;
 }
