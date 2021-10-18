@@ -1,4 +1,6 @@
 import React from "react";
+import PageFooter from "./commons/PageFooter";
+import SignUpForm from "./forms/SignUpForm";
 
 const WELCOME_TITLE = "Welcome!";
 const WELCOME_MESSAGE = "Use these awesome forms to login or create new account in your project for free."
@@ -17,6 +19,8 @@ const SignUpScreen = () => {
   return (
     <div className="page-container sign-up-screen">
       {renderWelcomeNoteSection()}
+      <SignUpForm />
+      <PageFooter className="footer-with-padding" />
     </div>
   )
 };
