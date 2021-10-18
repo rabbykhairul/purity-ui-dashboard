@@ -97,6 +97,11 @@ footer a {
   height: 100vh;
 }
 
+.sign-in-screen {
+  justify-content: flex-end !important;
+}
+
+.sign-in-screen,
 .sign-up-screen {
   padding: 1.55vw 1.55vw 2vw 1.55vw;
   position: relative;
