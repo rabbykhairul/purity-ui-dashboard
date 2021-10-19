@@ -19,6 +19,12 @@ a:hover {
   color: #4FD1C5;
 }
 
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
 button {
   font-size: 0.8vw;
   font-weight: 700;
@@ -76,6 +82,10 @@ footer span {
   background: #4FD1C5;
 }
 
+.bg-gray-light {
+  background: #F8F9FA;
+}
+
 .color-white {
   color: white;
 }
@@ -95,6 +105,7 @@ footer span {
 .page-container {
   width: 100vw;
   height: 100vh;
+  position: relative;
 }
 
 .sign-in-screen {
@@ -104,7 +115,6 @@ footer span {
 .sign-in-screen,
 .sign-up-screen {
   padding: 1.55vw 1.55vw 2vw 1.55vw;
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -118,12 +128,6 @@ footer span {
   right: 0;
   border-bottom-left-radius: 2vw;
   overflow: hidden;
-}
-
-.sign-in-screen .logo-container img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
 }
 
 .sign-in-form {
@@ -238,4 +242,51 @@ footer span {
 
 .compact-footer {
   padding: 0 15vw;
+}
+
+.main-page {
+  padding: 4.25vw 0.4vw 0 2.45vw;
+}
+
+.top-bar {
+  position: absolute;
+  top: 0;
+  width: 93.3vw;
+  height: 5.25vw;
+  padding-top: 1.65vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-bar .title-container {
+  width: 16.5%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 0.8vw;
+}
+
+.title-container h1 {
+  font-size: 0.75vw;
+}
+
+.title-container .logo-container {
+  width: 8.5%;
+  height: fit-content;
+  margin-right: 4%;
+}
+
+.page-info-container {
+  width: 83.5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-title {
+  font-size: 0.75vw;
+}
+
+.page-title h2 {
+  font-size: 0.8vw;
+  margin-top: 0.35vw;
 }
