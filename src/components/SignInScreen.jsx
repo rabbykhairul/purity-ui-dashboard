@@ -1,4 +1,5 @@
 import React from "react";
+import SignInForm from "./forms/SignInForm";
 import PageFooter from "./commons/PageFooter";
 
 const SignInScreen = () => {
@@ -14,6 +15,7 @@ const SignInScreen = () => {
   return (
     <div className="page-container sign-in-screen">
       {renderLogo()}
+      <SignInForm />
       <PageFooter className="compact-footer" />
     </div>
   )
