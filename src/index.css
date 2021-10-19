@@ -362,6 +362,37 @@ footer span {
   display: none;
 }
 
+.help-prompt {
+  width: 100%;
+  height: 10vw;
+  padding: 1vw 1.1vw;
+  background-size: cover;
+  background-position: right;
+  border-radius: 1vw;
+  overflow: hidden;
+  margin-top: 2.65vw;
+}
+
+.help-prompt .help-hint {
+  font-size: 0.75vw;
+  margin-top: 0.25vw;
+}
+
+.help-prompt .help-question {
+  width: fit-content;
+  padding: 0;
+  margin-bottom: 1.15vw;
+}
+
+.help-prompt button {
+  justify-content: center;
+  margin-top: 0.75vw;
+  border-radius: 0.65vw;
+  font-size: 0.63vw;
+  text-transform: uppercase;
+}
+
+.help-question,
 .btn-menu-item {
   display: flex;
   align-items: center;
