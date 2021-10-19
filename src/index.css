@@ -94,12 +94,32 @@ footer span {
   color: rgba(45, 55, 72, 1);
 }
 
+.color-gray-500 {
+  color: #718096;
+}
+
 .color-gray-400 {
   color: #A0AEC0;
 }
 
 .color-teal {
   color: #4FD1C5;
+}
+
+.btn-plain {
+  width: fit-content;
+  height: fit-content;
+  padding: 0;
+  background: transparent;
+  display: flex;
+  font-size: 0.9vw;
+  margin-left: 1.35vw;
+}
+
+.btn-plain span {
+  font-size: 0.75vw;
+  text-transform: none;
+  padding-left: 0.35vw;
 }
 
 .page-container {
@@ -245,13 +265,13 @@ footer span {
 }
 
 .main-page {
-  padding: 4.25vw 0.4vw 0 2.45vw;
+  padding: 4.25vw 0.9vw 0 2.45vw;
 }
 
 .top-bar {
   position: absolute;
   top: 0;
-  width: 93.3vw;
+  width: 95.5vw;
   height: 5.25vw;
   padding-top: 1.65vw;
   display: flex;
@@ -289,4 +309,8 @@ footer span {
 .page-title h2 {
   font-size: 0.8vw;
   margin-top: 0.35vw;
+}
+
+.utility-container {
+  display: flex;
 }
