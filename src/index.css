@@ -292,14 +292,14 @@ footer span {
 }
 
 .main-page {
-  padding: 4.25vw 0.9vw 0 2.45vw;
+  padding: 9.25vh 0.9vw 0 2.45vw;
 }
 
 .top-bar {
   position: absolute;
   top: 0;
   width: 95.5vw;
-  height: 5.25vw;
+  height: 9.25vh;
   padding-top: 1.65vw;
   display: flex;
   justify-content: space-between;
@@ -314,7 +314,7 @@ footer span {
   display: flex;
   align-items: center;
   height: 99%;
-  padding-bottom: 0.8vw;
+  padding-bottom: 0.8vh;
 }
 
 .title-container h1 {
@@ -350,10 +350,16 @@ footer span {
 
 .left-side-bar {
   position: absolute;
-  top: 6vw;
+  top: 11.5vh;
   width: 12.5%;
-  height: fit-content;
-  padding: 1.25vw 0;
+  height: 88.5vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.left-side-bar::-webkit-scrollbar {
+  display: none;
 }
 
 .btn-menu-item {
