@@ -397,3 +397,11 @@ footer span {
 .menu-item-icon {
   transition: all 0.5s ease-in-out;
 }
+
+.menu-title {
+  font-size: 0.67vw;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 1.5vw 0 1.15vw 0;
+  padding-left: 0.45vw;
+}
