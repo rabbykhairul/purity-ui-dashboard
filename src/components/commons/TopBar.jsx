@@ -1,6 +1,7 @@
 import React from "react";
 import { IoNotificationsSharp, IoSettingsSharp, IoPersonSharp } from "react-icons/io5";
 import Button from "./Button";
+import SearchBar from "./SearchBar";
 
 const TITLE = "PURITY UI DASHBOARD";
 
@@ -29,6 +30,7 @@ const TopBar = () => {
   const renderPageUtilityItems = () => {
     return (
       <div className="utility-container">
+        <SearchBar />
         <Button className="btn-plain color-gray-500" >
           <IoPersonSharp />
           <span>Sign In</span>
