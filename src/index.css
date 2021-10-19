@@ -78,6 +78,10 @@ footer span {
   cursor: pointer;
 }
 
+.bg-white {
+  background-color: white;
+}
+
 .bg-teal {
   background: #4FD1C5;
 }
@@ -120,6 +124,25 @@ footer span {
   font-size: 0.75vw;
   text-transform: none;
   padding-left: 0.35vw;
+}
+
+.search-bar {
+  margin-left: 1.35vw;
+  width: 10vw;
+  height: 2vw;
+  display: flex;
+  align-items: center;
+  padding: 0 0.5vw;
+  border-radius: 0.85vw;
+  border: 0.5px solid #E2E8F0;
+}
+
+.search-bar input {
+  width: 90%;
+  padding: 0 0.2vw;
+  border: none;
+  background: transparent;
+  font-size: 0.8vw;
 }
 
 .page-container {
@@ -313,4 +336,6 @@ footer span {
 
 .utility-container {
   display: flex;
+  align-items: center;
+  padding-bottom: 1.15vw;
 }
