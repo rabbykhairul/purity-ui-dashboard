@@ -20,12 +20,12 @@ a:hover {
 }
 
 button {
-  font-size: 0.75vw;
+  font-size: 0.8vw;
   font-weight: 700;
   text-transform: uppercase;
   border: none;
   border-radius: 0.5vw;
-  padding: 0.65vw;
+  padding: 0.75vw;
   width: 100%;
   cursor: pointer;
 }
@@ -113,16 +113,17 @@ footer span {
 .sign-in-screen .logo-container {
   position: absolute;
   width: 42.5%;
-  height: 80vh;
-  top: -3vw;
+  height: 85vh;
+  top: 0;
   right: 0;
   border-bottom-left-radius: 2vw;
+  overflow: hidden;
 }
 
 .sign-in-screen .logo-container img {
-  height: auto;
+  height: 100%;
   width: 100%;
-  object-fit: conver;
+  object-fit: cover;
 }
 
 .sign-in-form {
@@ -144,7 +145,15 @@ footer span {
 
 .sign-in-form p {
   font-size: 0.85vw;
-  margin-bottom: 1.1vw;
+  margin-bottom: 1.65vw;
+}
+
+.sign-in-form button {
+  margin: 1.1vw 0;
+}
+
+.sign-in-form .form-footer {
+  text-align: center;
 }
 
 .sign-up-screen .welcome-note-box {
