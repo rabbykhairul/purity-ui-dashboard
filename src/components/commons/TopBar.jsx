@@ -10,10 +10,12 @@ const TopBar = () => {
   const renderDashboardTitle = () => {
     return (
       <div className="title-container color-gray-700">
-        <div className="logo-container">
-          <img src={`${process.env.PUBLIC_URL}/logo-purity-ui-black.png`} alt="" />
+        <div className="masked bg-gray-light">
+          <div className="logo-container">
+            <img src={`${process.env.PUBLIC_URL}/logo-purity-ui-black.png`} alt="" />
+          </div>
+          <h1>{TITLE}</h1>
         </div>
-        <h1>{TITLE}</h1>
       </div>
     )
   }
