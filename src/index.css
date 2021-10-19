@@ -78,16 +78,20 @@ footer span {
   cursor: pointer;
 }
 
-.bg-white {
-  background-color: white;
-}
-
 .bg-teal {
   background: #4FD1C5;
 }
 
 .bg-gray-light {
   background: #F8F9FA;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-transparent {
+  background-color: transparent;
 }
 
 .color-white {
@@ -342,4 +346,54 @@ footer span {
   display: flex;
   align-items: center;
   padding-bottom: 1.15vw;
+}
+
+.left-side-bar {
+  position: absolute;
+  top: 6vw;
+  width: 12.5%;
+  height: fit-content;
+  padding: 1.25vw 0;
+}
+
+.btn-menu-item {
+  display: flex;
+  align-items: center;
+  text-transform: none;
+  font-size: 0.75vw;
+  padding: 0.55vw 0.85vw;
+  border-radius: 1vw;
+  margin-bottom: 1vw;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-menu-item:hover {
+  background-color: white;
+  box-shadow: 0px 3.5px 5.5px rgba(0, 0, 0, 0.02);
+  letter-spacing: 0.1vw;
+}
+
+.btn-menu-item:hover .menu-item-icon-container {
+  background-color: #4FD1C5;
+}
+
+.btn-menu-item:hover .menu-item-icon {
+  color: white !important;
+}
+
+.btn-menu-item.active {
+  box-shadow: 0px 3.5px 5.5px rgba(0, 0, 0, 0.02);
+}
+
+.menu-item-icon-container {
+  padding: 0.4vw 0.45vw 0.3vw 0.45vw;
+  font-size: 1.1vw;
+  margin-right: 0.8vw;
+  border-radius: 0.85vw;
+  box-shadow: 0px 3.5px 5.5px rgba(0, 0, 0, 0.02);
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-item-icon {
+  transition: all 0.5s ease-in-out;
 }
