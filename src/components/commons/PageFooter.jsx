@@ -4,17 +4,17 @@ const PageFooter = ({ className }) => {
 
   const renderFooterMessage = () => {
     return (
-      <p>@ 2021, Made with ❤️ by <a className="color-teal">Creative Tim</a> & <a className="color-teal">Simmmple</a> for a better web</p>
+      <p>@ 2021, Made with ❤️ by <span className="color-teal">Creative Tim</span> & <span className="color-teal">Simmmple</span> for a better web</p>
     )
   }
 
   const renderFooterActions = () => {
     return (
       <div className="footer-action-container">
-        <a href="#">Creative Tim</a>
-        <a href="#">Simmple</a>
-        <a href="#">Blog</a>
-        <a href="#">License</a>
+        <span>Creative Tim</span>
+        <span>Simmple</span>
+        <span>Blog</span>
+        <span>License</span>
       </div>
     )
   }
