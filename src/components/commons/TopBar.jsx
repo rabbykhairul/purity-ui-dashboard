@@ -1,4 +1,6 @@
 import React from "react";
+import { IoNotificationsSharp, IoSettingsSharp, IoPersonSharp } from "react-icons/io5";
+import Button from "./Button";
 
 const TITLE = "PURITY UI DASHBOARD";
 
@@ -24,11 +26,28 @@ const TopBar = () => {
     )
   }
 
+  const renderPageUtilityItems = () => {
+    return (
+      <div className="utility-container">
+        <Button className="btn-plain color-gray-500" >
+          <IoPersonSharp />
+          <span>Sign In</span>
+        </Button>
+        <Button className="btn-plain color-gray-500" >
+          <IoSettingsSharp />
+        </Button>
+        <Button className="btn-plain color-gray-500" >
+          <IoNotificationsSharp />
+        </Button>
+      </div>
+    )
+  }
+
   const renderPageInfoAndUtilityItems = () => {
     return (
       <div className="page-info-container">
         {renderPageTitle()}
-        <p>moo</p>
+        {renderPageUtilityItems()}
       </div>
     )
   }
