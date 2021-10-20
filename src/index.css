@@ -137,6 +137,14 @@ footer span {
   background: #4FD1C5;
 }
 
+.bg-teal-300 {
+  background: rgba(79, 209, 197, 1);;
+}
+
+.bg-gray-200 {
+  background: #E2E8F0;
+}
+
 .bg-gray-300 {
   background: #CBD5E0;
 }
@@ -157,6 +165,10 @@ footer span {
   color: white;
 }
 
+.color-green-400 {
+  color: #48BB78;
+}
+
 .color-gray-700 {
   color: rgba(45, 55, 72, 1);
 }
@@ -171,6 +183,10 @@ footer span {
 
 .color-teal {
   color: #4FD1C5;
+}
+
+.color-teal-300 {
+  color: rgba(79, 209, 197, 1);
 }
 
 .btn-plain {
@@ -541,12 +557,14 @@ footer span {
   margin-bottom: 1vw;
 }
 
-.auther-info {
+.auther-info,
+.project-info {
   display: flex;
   align-items: center;
 }
 
-.auther-pic-container {
+.auther-pic-container,
+.project-logo-container {
   width: 2vw;
   height: 2vw;
   border-radius: 0.75vw;
@@ -576,4 +594,46 @@ footer span {
 .joining-date {
   font-size: 0.8vw;
   font-weight: 700;
+}
+
+.project-table-row .first-column {
+  width: 37%;
+}
+
+.project-table-row .middle-column {
+  width: 19%;
+}
+
+.project-table-header h2 {
+  margin-bottom: 0.5vw;
+}
+
+.project-table-header p {
+  font-size: 0.7vw;
+}
+
+.project-table-header p span {
+  font-weight: 700;
+  margin-left: 0.25vw;
+}
+
+.icon-mini {
+  font-size: 0.85vw;
+}
+
+.project-table-text {
+  font-size: 0.8vw;
+  font-weight: 700;
+}
+
+.progress-bar-container {
+  width: 65%;
+  height: 0.23vw;
+  border-radius: 0.5vw;
+  margin-top: 0.35vw;
+  overflow: hidden;
+}
+
+.progress-indicator {
+  height: 100%;
 }
