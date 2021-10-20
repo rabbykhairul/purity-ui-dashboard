@@ -1,5 +1,6 @@
 import React from "react";
 import { BsFacebook, BsApple, BsGoogle } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 import Button from "../commons/Button";
 import Input from "../commons/Input";
@@ -34,7 +35,7 @@ const SignUpForm = () => {
 
   const renderFormFooter = () => {
     return (
-      <p className="form-footer color-gray-400">Already have an account? <span className="color-teal">Sign in</span></p>
+      <p className="form-footer color-gray-400">Already have an account? <Link to="/login"><span className="color-teal">Sign in</span></Link></p>
     )
   }
 
