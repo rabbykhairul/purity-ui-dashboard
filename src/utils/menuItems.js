@@ -14,25 +14,25 @@ export const DASHBOARD_MENU = {
       id: getMenuId(),
       label: "Dashboard",
       icon: IoHome,
-      path: "/"
+      path: "/pages/dashboard"
     },
     {
       id: getMenuId(),
       label: "Tables",
       icon: IoMdStats,
-      path: "/"
+      path: "/pages/tables"
     },
     {
       id: getMenuId(),
       label: "Billing",
       icon: BsCreditCardFill,
-      path: "/"
+      path: "/pages/billing"
     },
     {
       id: getMenuId(),
       label: "RTL",
       icon: FaWrench,
-      path: "/"
+      path: "/pages/rtl"
     }
   ]
 }
@@ -50,13 +50,13 @@ export const PROFILE_MENU = {
       id: getMenuId(),
       label: "Sign In",
       icon: HiDocument,
-      path: "/"
+      path: "/login"
     },
     {
       id: getMenuId(),
       label: "Sign Up",
       icon: IoIosRocket,
-      path: "/"
+      path: "/register"
     },
   ]
 }
