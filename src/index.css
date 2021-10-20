@@ -292,12 +292,13 @@ footer span {
 }
 
 .main-page {
-  padding: 9.25vh 0.9vw 0 2.45vw;
+  padding: 11vh 0.9vw 0 18vw;
 }
 
 .top-bar {
   position: absolute;
   top: 0;
+  left: 2.45vw;
   width: 95.5vw;
   height: 9.25vh;
   padding-top: 1.65vw;
@@ -351,6 +352,7 @@ footer span {
 .left-side-bar {
   position: absolute;
   top: 11.5vh;
+  left: 2.45vw;
   width: 12.5%;
   height: 88.5vh;
   overflow-y: scroll;
