@@ -3,6 +3,7 @@ import { BsArrowRightShort } from "react-icons/bs";
 import Button from "./commons/Button";
 import ShortHighlights from "./statistics/ShortHighlights";
 import PageFooter from "./commons/PageFooter";
+import UserStatistics from "./statistics/UserStatistics";
 
 const DashboardScreen = () => {
 
@@ -26,7 +27,7 @@ const DashboardScreen = () => {
             <img src={`${process.env.PUBLIC_URL}/logo-small.png`} alt="" />
           </div>
         </div>
-        <div className="promotion-box-2 page-section color-white">
+        <div className="promotion-box-2 page-section color-white bg-white">
           <div className="promo-2-info-container" style={{ background: `linear-gradient(360deg, rgba(49, 56, 96, 0.16) 0%, rgba(21, 25, 40, 0.88) 100%), url('${process.env.PUBLIC_URL}/brooke-cagle-g1Kr4Ozfoac-unsplash 1.png') center/cover` }}>
             <div>
               <p>Work with the Rockets</p>
@@ -43,11 +44,20 @@ const DashboardScreen = () => {
     )
   }
 
+  const renderStatistics = () => {
+    return (
+      <div className="statistics-container">
+        <UserStatistics />
+      </div>
+    )
+  }
+
   return (
     <div className="dashboard-screen">
       <div>
         <ShortHighlights />
         {renderPromotions()}
+        {renderStatistics()}
       </div>
       <PageFooter className="footer-with-vertical-gap" />
     </div>
