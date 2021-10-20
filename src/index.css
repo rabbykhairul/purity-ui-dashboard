@@ -777,7 +777,7 @@ footer span {
 }
 
 .user-statistics-container {
-  width: 45%;
+  width: 44%;
 }
 
 .sales-statistics-container {
@@ -841,4 +841,8 @@ footer span {
 .highlights-container p {
   font-size: 0.85vw;
   font-weight: 700;
+}
+
+.sales-statistics-container .stat-header {
+  margin-top: 0.3vw;
 }
