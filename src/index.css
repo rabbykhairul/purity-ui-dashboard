@@ -169,6 +169,10 @@ footer span {
   color: #48BB78;
 }
 
+.color-red-500 {
+  color: rgba(229, 62, 62, 1);
+}
+
 .color-gray-700 {
   color: rgba(45, 55, 72, 1);
 }
@@ -505,6 +509,7 @@ footer span {
   box-shadow: 0px 3.5px 5.5px rgba(0, 0, 0, 0.02);
 }
 
+.short-stats-icon-container,
 .menu-item-icon-container {
   padding: 0.4vw 0.45vw 0.3vw 0.45vw;
   font-size: 1.1vw;
@@ -526,6 +531,7 @@ footer span {
   padding-left: 0.45vw;
 }
 
+.dashboard-screen,
 .tables-screen {
   width: 100%;
   height: 89vh;
@@ -537,6 +543,7 @@ footer span {
   scrollbar-width: none;  /* Firefox */
 }
 
+.dashboard-screen::-webkit-scrollbar,
 .tables-screen::-webkit-scrollbar {
   display: none;
 }
@@ -636,4 +643,206 @@ footer span {
 
 .progress-indicator {
   height: 100%;
+}
+
+.short-highlights-container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+}
+
+.short-hightlight-box {
+  width: 24%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85vw 1vw;
+  border-radius: 0.85vw;
+}
+
+.highlight-info {
+  display: flex;
+  align-items: flex-end;
+  margin-top: 0.32vw;
+}
+
+.highlight-info p {
+  font-size: 1.015vw;
+  font-weight: 700;
+  margin-right: 0.35vw;
+}
+
+.highlight-info p:last-child {
+  font-size: 0.87vw;
+}
+
+.short-hightlight-box .icon-container {
+  width: fit-content;
+  padding: 0;
+  margin: 0;
+}
+
+.short-stats-icon-container {
+  margin: 0;
+  padding: 0.5vw 0.5vw 0.3vw 0.5vw;
+  font-size: 1.25vw;
+  border-radius: 0.75vw;
+}
+
+.statistics-container,
+.promotions-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.promotion-box-1 {
+  width: 54%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.promotion-box-2 {
+  width: 44%;
+}
+
+.promotion-box-1,
+.promotion-box-2 {
+  height: 14.5vw;
+  padding: 0.85vw 1.15vw;
+  border-radius: 1vw;
+}
+
+.promotion-box-1 .info-container {
+  width: 48%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.promotion-box-1 .logo-container {
+  width: 43%;
+  height: 100%;
+  border-radius: 0.65vw;
+  overflow: hidden;
+}
+
+.promotions-container .btn-plain {
+  font-size: 0.75vw;
+  text-transform: none;
+  margin: 0;
+}
+
+.promotions-container .icon-mini {
+  font-size: 1.1vw;
+}
+
+.promotions-container .info-container p:first-child {
+  font-size: 0.65vw;
+}
+
+.promotions-container .info-container p:nth-child(2) {
+  font-size: 0.9vw;
+  font-weight: 700;
+  margin-top: 0.35vw;
+  margin-bottom: 0.65vw;
+}
+
+.promotions-container .info-container p:last-child {
+  font-size: 0.75vw;
+  line-height: 140%;
+}
+
+.promo-2-info-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.8vw 30% 0.8vw 1.1vw;
+  border-radius: 0.65vw;
+}
+
+.promo-2-info-container p:first-child {
+  font-size: 0.85vw;
+  font-weight: 700;
+  margin-bottom: 0.9vw;
+}
+
+.promo-2-info-container p:last-child {
+  font-size: 0.7vw;
+  line-height: 150%;
+}
+
+.user-statistics-container {
+  width: 44%;
+}
+
+.sales-statistics-container {
+  width: 54%;
+}
+
+.user-statistics-container,
+.sales-statistics-container {
+  height: 23vw;
+  padding: 0.85vw 1.15vw;
+  border-radius: 1vw;
+}
+
+.user-graph-container {
+  width: 100%;
+  height: 50%;
+  border-radius: 0.5vw;
+  background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
+}
+
+.stat-header {
+  margin: 1.65vw 0 2.15vw 0;
+}
+
+.stat-header h4 {
+  font-size: 0.9vw;
+  margin-bottom: 0.5vw;
+}
+
+.stat-header p {
+  font-size: 0.75vw;
+}
+
+.stat-header p span {
+  font-weight: 700;
+}
+
+.user-statistics-container .highlights-container {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.highlights-container .short-stats-icon-container {
+  font-size: 1vw;
+  border-radius: 0.65vw;
+  padding: 0.5vw 0.5vw 0.3vw 0.5vw;
+  margin-right: 0.5vw;
+}
+
+.highlights-container .title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.85vw;
+}
+
+.highlights-container .title p {
+  font-size: 0.75vw;
+}
+
+.highlights-container p {
+  font-size: 0.85vw;
+  font-weight: 700;
+}
+
+.sales-statistics-container .stat-header {
+  margin-top: 0.3vw;
 }
