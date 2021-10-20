@@ -61,6 +61,30 @@ input:focus {
   outline: none;
 }
 
+table {
+  width: 100%;
+  border: none;
+  table-layout: fixed;
+}
+
+table, th, td {
+  border: none;
+}
+
+th, td {
+  padding-right: 0.5vw;
+}
+
+th {
+  font-size: 0.65vw;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+table .first-column {
+  width: 38%;
+}
+
 footer {
   display: flex;
   justify-content: space-between;
@@ -479,5 +503,5 @@ footer span {
 
 .table-container h2 {
   font-size: 1vw;
-  margin-bottom: 1.35vw;
+  margin-bottom: 1vw;
 }
