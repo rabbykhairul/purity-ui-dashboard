@@ -4,6 +4,7 @@ import Button from "./commons/Button";
 import ShortHighlights from "./statistics/ShortHighlights";
 import PageFooter from "./commons/PageFooter";
 import UserStatistics from "./statistics/UserStatistics";
+import SalesStatistics from "./statistics/SalesStatistics";
 
 const DashboardScreen = () => {
 
@@ -48,6 +49,7 @@ const DashboardScreen = () => {
     return (
       <div className="statistics-container">
         <UserStatistics />
+        <SalesStatistics />
       </div>
     )
   }
