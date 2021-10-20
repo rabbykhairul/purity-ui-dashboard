@@ -26,7 +26,19 @@ const DashboardScreen = () => {
             <img src={`${process.env.PUBLIC_URL}/logo-small.png`} alt="" />
           </div>
         </div>
-        <div className="promotion-box-2 page-section bg-white"></div>
+        <div className="promotion-box-2 page-section color-white">
+          <div className="promo-2-info-container" style={{ background: `linear-gradient(360deg, rgba(49, 56, 96, 0.16) 0%, rgba(21, 25, 40, 0.88) 100%), url('${process.env.PUBLIC_URL}/brooke-cagle-g1Kr4Ozfoac-unsplash 1.png') center/cover` }}>
+            <div>
+              <p>Work with the Rockets</p>
+              <p>
+                Wealth creation is an evolutionarily recent positive-sum game. It is all about who take the opportunity first.
+              </p>
+            </div>
+            <Button className="btn-plain">
+              Read more <BsArrowRightShort className="icon-mini" />
+            </Button>
+          </div>
+        </div>
       </div>
     )
   }
