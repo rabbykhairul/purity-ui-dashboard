@@ -370,7 +370,8 @@ footer span {
   background-position: right;
   border-radius: 1vw;
   overflow: hidden;
-  margin-top: 2.65vw;
+  margin-top: 5.5vw;
+  margin-bottom: 3.5vw;
 }
 
 .help-prompt .help-hint {
