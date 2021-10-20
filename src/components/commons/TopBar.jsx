@@ -1,11 +1,20 @@
 import React from "react";
 import { IoNotificationsSharp, IoSettingsSharp, IoPersonSharp } from "react-icons/io5";
+import { useLocation } from "react-router";
 import Button from "./Button";
 import SearchBar from "./SearchBar";
 
 const TITLE = "PURITY UI DASHBOARD";
 
 const TopBar = () => {
+
+  const location = useLocation();
+
+  const getPageTitle = () => {
+    console.log("location: ", location);
+    const pageTitle = location.pathname.split("/")[2];
+    return pageTitle[0].toUpperCase() + pageTitle.slice(1).toLowerCase();
+  }
 
   const renderDashboardTitle = () => {
     return (
@@ -23,8 +32,8 @@ const TopBar = () => {
   const renderPageTitle = () => {
     return (
       <div className="page-title">
-        <p className="color-gray-400">Pages / <span className="color-gray-700">Tables</span></p>
-        <h2 className="color-gray-700">Tables</h2>
+        <p className="color-gray-400">Pages / <span className="color-gray-700">{getPageTitle()}</span></p>
+        <h2 className="color-gray-700">{getPageTitle()}</h2>
       </div>
     )
   }
