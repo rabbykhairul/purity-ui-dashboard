@@ -1,4 +1,6 @@
 import React from "react";
+import { AiFillCheckCircle } from "react-icons/ai";
+import { BsThreeDotsVertical } from "react-icons/bs";
 import Button from "../components/commons/Button";
 
 const isAutherOnline = (status) => status.toLowerCase() === "online";
@@ -40,6 +42,29 @@ const renderJoiningDate = (autherDetails) => {
   return <p className="joining-date color-gray-700">{joiningDate}</p>
 }
 
+const renderProjectBasicInfo = (projectDetails) => {
+  const { title } = projectDetails;
+  return (
+    <div className="project-info">
+      <div className="project-logo-container bg-gray-300"></div>
+      <p className="project-table-text">{title}</p>
+    </div>
+  )
+}
+
+const renderProjectCompletionPercentage = (projectDetails) => {
+  const { completionParcentage } = projectDetails;
+
+  return (
+    <>
+    <p className="project-table-text color-teal-300">{projectDetails.completionParcentage}%</p>
+    <div className="progress-bar-container bg-gray-200">
+      <div className="progress-indicator bg-teal-300" style={{ width: `${completionParcentage}%` }}></div>
+    </div>
+    </>
+  )
+}
+
 export const renderAutherTableHeader = () => {
   return <h2 className="color-gray-700">Authors Table</h2>;
 }
@@ -66,4 +91,40 @@ export const renderAutherTableRow = (autherDetails, key) => {
       <td className="last-column"><Button className="btn-plain color-gray-500" >Edit</Button></td>
     </tr>
   )
+}
+
+export const renderProjectTableHeader = () => {
+  return (
+    <div className="project-table-header">
+      <h2 className="color-gray-700">Projects</h2>
+      <div style={{ display: "flex", alignItems: "center", marginBottom: "1.35vw" }}>
+        <AiFillCheckCircle className="color-green-400 icon-mini" />
+        <p className="color-gray-400"><span>30 done</span> this month</p>
+      </div>
+    </div>
+  );
+}
+
+export const renderProjectTableColumnHeaders = () => {
+  return (
+    <tr className="color-gray-400 column-header-row project-table-row">
+      <th className="first-column">Companies</th>
+      <th className="middle-column">Budget</th>
+      <th className="middle-column">Status</th>
+      <th className="middle-column">Completion</th>
+      <th className="last-column"></th>
+    </tr>
+  )
+}
+
+export const renderProjectTableRow = (projectDetails, key) => {
+  return (
+    <tr key={key} className="data-row project-table-row color-gray-700">
+      <td className="first-column">{renderProjectBasicInfo(projectDetails)}</td>
+      <td className="middle-column"><p className="project-table-text">{projectDetails.budget ? "$" + projectDetails.budget : "Not Set"}</p></td>
+      <td className="middle-column"><p className="project-table-text">{projectDetails.status}</p></td>
+      <td className="middle-column">{renderProjectCompletionPercentage(projectDetails)}</td>
+      <td className="last-column"><Button className="btn-plain color-gray-500" ><BsThreeDotsVertical /></Button></td>
+    </tr>
+  );
 }
