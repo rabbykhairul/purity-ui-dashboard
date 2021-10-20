@@ -12,7 +12,7 @@ const TopBar = () => {
 
   const getPageTitle = () => {
     console.log("location: ", location);
-    const pageTitle = location.pathname.split("/")[2];
+    const pageTitle = location.pathname.split("/")[2] ?? "dashboard";
     return pageTitle[0].toUpperCase() + pageTitle.slice(1).toLowerCase();
   }
 
