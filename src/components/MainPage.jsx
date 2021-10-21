@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router";
+import AuthorContext from "../contexts/AuthorContext";
 import LeftSideBar from "./commons/LeftSideBar";
 import TopBar from "./commons/TopBar";
 import DashboardScreen from "./DashboardScreen";
@@ -7,6 +8,17 @@ import TablesScreen from "./TablesScreen";
 
 const MainPage = () => {
   const location = useLocation();
+  const [authors, setAuthors] = useState([]);
+
+  const addNewAuthor = (author) => setAuthors([ author, ...authors ]);
+  const removeDeletedAuthor = (author) => setAuthors(authors.filter(a => a._id !== author._id));
+  const updateAuthor = (author) => {
+    const allAuthors = [ ...authors ];
+    const targetAuthorIdx = allAuthors.findIndex(a => a._id === author._id);
+    allAuthors[targetAuthorIdx] = author;
+
+    setAuthors(allAuthors);
+  }
 
   const renderContents = () => {
     if (location.pathname.includes("dashboard") || location.pathname === "/pages") return <DashboardScreen />;
@@ -19,7 +31,9 @@ const MainPage = () => {
     <div className="page-container main-page bg-gray-light">
       <TopBar />
       <LeftSideBar />
-      {renderContents()}
+      <AuthorContext.Provider value={{ authors, authorCreated: addNewAuthor, authorDeleted: removeDeletedAuthor, authorUpdated: updateAuthor }}>
+        {renderContents()}
+      </AuthorContext.Provider>
     </div>
   )
 };
