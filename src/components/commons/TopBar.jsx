@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { IoNotificationsSharp, IoSettingsSharp, IoPersonSharp } from "react-icons/io5";
-import { useLocation } from "react-router";
+import { GiExitDoor } from "react-icons/gi";
+import { useHistory, useLocation } from "react-router";
+import UserContext from "../../contexts/UserContext";
 import Button from "./Button";
 import SearchBar from "./SearchBar";
 
@@ -8,7 +10,9 @@ const TITLE = "PURITY UI DASHBOARD";
 
 const TopBar = () => {
 
+  const history = useHistory();
   const location = useLocation();
+  const userInfo = useContext(UserContext);
 
   const getPageTitle = () => {
     console.log("location: ", location);
@@ -38,14 +42,28 @@ const TopBar = () => {
     )
   }
 
+  const renderSignInSignOutButton = () => {
+    if (userInfo.user)
+      return (
+        <Button className="btn-plain color-gray-500" onClick={userInfo.userLoggedOut} >
+          <GiExitDoor />
+          <span>Sign Out</span>
+        </Button>
+      )
+    else 
+      return (
+        <Button className="btn-plain color-gray-500" onClick={() => history.push("/login")} >
+          <IoPersonSharp />
+          <span>Sign In</span>
+        </Button>
+    )
+  }
+
   const renderPageUtilityItems = () => {
     return (
       <div className="utility-container">
         <SearchBar />
-        <Button className="btn-plain color-gray-500" >
-          <IoPersonSharp />
-          <span>Sign In</span>
-        </Button>
+        {renderSignInSignOutButton()}
         <Button className="btn-plain color-gray-500" >
           <IoSettingsSharp />
         </Button>
