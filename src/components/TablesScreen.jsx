@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import AuthorContext from "../contexts/AuthorContext";
 import { renderAutherTableColumnHeaders, renderAutherTableHeader, renderAutherTableRow, renderProjectTableColumnHeaders, renderProjectTableHeader, renderProjectTableRow } from "../utils/tableHelper";
 import PageFooter from "./commons/PageFooter";
 import Table from "./tables/Table";
@@ -73,6 +74,8 @@ const projects = [
 ]
 
 const TablesScreen = () => {
+  const { authors } = useContext(AuthorContext);
+
   return (
     <div className="tables-screen">
       <div>
