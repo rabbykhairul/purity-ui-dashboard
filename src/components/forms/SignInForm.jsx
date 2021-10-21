@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Input from "../commons/Input";
 import Button from "../commons/Button";
 import { Link, useHistory } from "react-router-dom";
 import { loginUser } from "../../services/authService";
+import UserContext from "../../contexts/UserContext";
 
 const WELCOME_MESSAGE = "Welcome Back";
 const LOGIN_HINT = "Enter your email and password to sign in";
@@ -10,6 +11,7 @@ const LOGIN_HINT = "Enter your email and password to sign in";
 const SignInForm = () => {
 
   const history = useHistory();
+  const userInfo = useContext(UserContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,6 +24,7 @@ const SignInForm = () => {
     const { user } = await loginUser(email, password);
 
     if (user) {
+      userInfo.userLoggedIn(user);
       history.push("/pages/dashboard");
     }
   }
