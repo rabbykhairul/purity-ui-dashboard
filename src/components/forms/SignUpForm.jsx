@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BsFacebook, BsApple, BsGoogle } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { registerUser } from "../../services/authService";
 
 import Button from "../commons/Button";
 import Input from "../commons/Input";
@@ -13,8 +14,23 @@ const SignUpForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const validateFormData = () => fullName && email && password;
+
+  const handleUserRegistration = async () => {
+    const userDetails = { fullName, email, password };
+    const result = await registerUser(userDetails);
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const formValidationPassed = validateFormData();
+
+    if (formValidationPassed) {
+      setFormSubmitted(true);
+      handleUserRegistration();
+    }
   }
 
   const renderAlternateRegistrationOptions = () => {
@@ -49,7 +65,7 @@ const SignUpForm = () => {
       <Input title="Name" placeholder="Your full name" name="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} />
       <Input title="Email" placeholder="Your email address" name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
       <Input title="Password" placeholder="Your password" name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <Button type="submit" onClick={handleSubmit} >Sign Up</Button>
+      <Button type="submit" onClick={handleSubmit} disabled={formSubmitted} className={formSubmitted ? "tracking-out-expand" : ""} >{ formSubmitted ? "Signing You Up..." : "Sign Up"}</Button>
       {renderFormFooter()}
     </form>
   )
