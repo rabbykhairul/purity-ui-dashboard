@@ -1,15 +1,41 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Input from "../commons/Input";
 import Button from "../commons/Button";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { loginUser } from "../../services/authService";
+import UserContext from "../../contexts/UserContext";
 
 const WELCOME_MESSAGE = "Welcome Back";
 const LOGIN_HINT = "Enter your email and password to sign in";
 
 const SignInForm = () => {
 
+  const history = useHistory();
+  const userInfo = useContext(UserContext);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const validateFormData = () => email && password;
+
+  const handleUserLogin = async () => {
+    const { user } = await loginUser(email, password);
+
+    if (user) {
+      userInfo.userLoggedIn(user);
+      history.push("/pages/dashboard");
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formValidationPassed = validateFormData();
+    if (formValidationPassed) {
+      setFormSubmitted(true);
+      handleUserLogin();
+    }
   }
 
   const renderWelcomeMessage = () => {
@@ -30,9 +56,9 @@ const SignInForm = () => {
   return (
     <form className="sign-in-form" onSubmit={handleSubmit}>
       {renderWelcomeMessage()}
-      <Input title="Email" placeholder="Your email address" type="email" />
-      <Input title="Password" placeholder="Your password" type="password" />
-      <Button type="submit">SIGN IN</Button>
+      <Input title="Email" name="email" placeholder="Your email address" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <Input title="Password" name="password" placeholder="Your password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <Button type="submit" className={formSubmitted ? "tracking-out-expand" : ""} disabled={formSubmitted} >{formSubmitted ? "Signing you in..." : "SIGN IN"}</Button>
       {renderFormFooter()}
     </form>
   )

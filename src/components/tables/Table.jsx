@@ -7,8 +7,12 @@ const Table = (props) => {
     <div className="table-container page-section bg-white">
       {renderHeader && renderHeader()}
       <table>
-        {renderColumnHeader()}
-        {items.map((item, idx) => renderRow(item, idx))}
+        <thead>
+          {renderColumnHeader()}
+        </thead>
+        <tbody>
+          {items.map((item, idx) => renderRow(item, idx))}
+        </tbody>
       </table>
     </div>
   )

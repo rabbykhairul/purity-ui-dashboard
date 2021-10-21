@@ -6,7 +6,7 @@ const Input = (props) => {
   return (
     <>
     <label htmlFor={name} className="color-gray-700">{title}</label>
-    <input type={type} name={name} placeholder={placeholder} onChange={onChange} id={name} className="color-gray-700" />
+    <input type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} id={name} className="color-gray-700" />
     </>
   )
 };

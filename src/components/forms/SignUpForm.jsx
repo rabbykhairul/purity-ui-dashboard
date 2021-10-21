@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { BsFacebook, BsApple, BsGoogle } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import UserContext from "../../contexts/UserContext";
+import { registerUser } from "../../services/authService";
 
 import Button from "../commons/Button";
 import Input from "../commons/Input";
@@ -9,8 +11,35 @@ const FORM_TITLE = "Register with";
 
 const SignUpForm = () => {
 
-  const handleSubmit = (e) => {
+  const history = useHistory();
+  const userInfo = useContext(UserContext);
+
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const validateFormData = () => fullName && email && password;
+
+  const handleUserRegistration = async () => {
+    const userDetails = { fullName, email, password };
+    const { user } = await registerUser(userDetails);
+
+    if (user) {
+      userInfo.userLoggedIn(user);
+      history.push("/pages/dashboard");
+    }
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const formValidationPassed = validateFormData();
+
+    if (formValidationPassed) {
+      setFormSubmitted(true);
+      handleUserRegistration();
+    }
   }
 
   const renderAlternateRegistrationOptions = () => {
@@ -42,10 +71,10 @@ const SignUpForm = () => {
   return (
     <form className="sign-up-form" onSubmit={handleSubmit}>
       {renderAlternateRegistrationOptions()}
-      <Input title="Name" placeholder="Your full name" name="fullName" />
-      <Input title="Email" placeholder="Your email address" name="email" type="email" />
-      <Input title="Password" placeholder="Your password" name="password" type="password" />
-      <Button type="submit" onClick={handleSubmit} >Sign Up</Button>
+      <Input title="Name" placeholder="Your full name" name="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+      <Input title="Email" placeholder="Your email address" name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <Input title="Password" placeholder="Your password" name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <Button type="submit" onClick={handleSubmit} disabled={formSubmitted} className={formSubmitted ? "tracking-out-expand" : ""} >{ formSubmitted ? "Signing You Up..." : "Sign Up"}</Button>
       {renderFormFooter()}
     </form>
   )
