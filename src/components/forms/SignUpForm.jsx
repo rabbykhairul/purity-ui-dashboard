@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BsFacebook, BsApple, BsGoogle } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
@@ -8,6 +8,10 @@ import Input from "../commons/Input";
 const FORM_TITLE = "Register with";
 
 const SignUpForm = () => {
+
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,9 +46,9 @@ const SignUpForm = () => {
   return (
     <form className="sign-up-form" onSubmit={handleSubmit}>
       {renderAlternateRegistrationOptions()}
-      <Input title="Name" placeholder="Your full name" name="fullName" />
-      <Input title="Email" placeholder="Your email address" name="email" type="email" />
-      <Input title="Password" placeholder="Your password" name="password" type="password" />
+      <Input title="Name" placeholder="Your full name" name="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+      <Input title="Email" placeholder="Your email address" name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <Input title="Password" placeholder="Your password" name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
       <Button type="submit" onClick={handleSubmit} >Sign Up</Button>
       {renderFormFooter()}
     </form>
