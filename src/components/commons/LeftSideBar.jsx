@@ -22,15 +22,15 @@ const LeftSideBar = () => {
   }
 
   const renderMenuItems = (menuInfo) => {
-    const buttonClassActive = "active bg-white";
-    const buttonClassInActive = "bg-transparent";
+    const buttonClassActive = "active bg-white color-gray-700";
+    const buttonClassInActive = "bg-transparent color-gray-400";
     const iconContainerClassActive = "bg-teal";
     const iconContainerClassInActive = "bg-white";
     const iconClassActive = "color-white";
     const iconClassInActive = "color-teal";
 
     const menuItems = menuInfo.items.map((item) => (
-      <Button key={item.id} onClick={() => handleRedirect(item)} className={`btn-menu-item color-gray-700 ${item.id === activeMenuItem.id ? buttonClassActive : buttonClassInActive}`}>
+      <Button key={item.id} onClick={() => handleRedirect(item)} className={`btn-menu-item ${item.id === activeMenuItem.id ? buttonClassActive : buttonClassInActive}`}>
         <span className={`menu-item-icon-container ${item.id === activeMenuItem.id ? iconContainerClassActive : iconContainerClassInActive}`}>
           <item.icon className={`menu-item-icon ${item.id === activeMenuItem.id ? iconClassActive : iconClassInActive}`} />
         </span>
