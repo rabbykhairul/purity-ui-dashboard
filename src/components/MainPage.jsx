@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
-import { BsArrowLeftCircleFill } from "react-icons/bs";
+import { BsArrowRightCircleFill } from "react-icons/bs";
 import AuthorContext from "../contexts/AuthorContext";
 import { getAuthors } from "../services/authorService";
 import LeftSideBar from "./commons/LeftSideBar";
@@ -15,9 +15,16 @@ const MainPage = () => {
   const [authors, setAuthors] = useState([]);
   const [selectedAuthor, setSelectedAuthor] = useState(null);
 
+  const [displaySideOverlay, setDisplaySideOverlay] = useState(false);
+
   useEffect(() => {
     loadAuthors();
   }, [])
+
+  useEffect(() => {
+    if (selectedAuthor) setDisplaySideOverlay(true);
+    else setDisplaySideOverlay(false);
+  }, [selectedAuthor]);
 
   const loadAuthors = async () => {
     const authors = await getAuthors();
@@ -42,12 +49,32 @@ const MainPage = () => {
     return null;
   }
 
+  const renderOverlayCloseButton = () => {
+    return (
+      <Button className="bg-gray-light color-gray-500" onClick={() => setSelectedAuthor(null)}>
+        <BsArrowRightCircleFill />
+        <span>Cancel</span>
+      </Button>
+    )
+  }
+
+  const renderRightSideOverlay = () => {
+    if (displaySideOverlay)
+      return (
+        <div className="right-side-overlay bg-white">
+          {renderOverlayCloseButton()}
+        </div>
+      );
+    else return null;
+  }
+
   return (
     <div className="page-container main-page bg-gray-light">
       <TopBar />
       <LeftSideBar />
       <AuthorContext.Provider value={{ authors, selectedAuthor, authorSelected: storeSelectedAuthor, authorCreated: addNewAuthor, authorDeleted: removeDeletedAuthor, authorUpdated: updateAuthor }}>
         {renderContents()}
+        {renderRightSideOverlay()}
       </AuthorContext.Provider>
     </div>
   )
