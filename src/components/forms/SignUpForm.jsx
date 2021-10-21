@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { BsFacebook, BsApple, BsGoogle } from "react-icons/bs";
 import { Link, useHistory } from "react-router-dom";
+import UserContext from "../../contexts/UserContext";
 import { registerUser } from "../../services/authService";
 
 import Button from "../commons/Button";
@@ -11,6 +12,7 @@ const FORM_TITLE = "Register with";
 const SignUpForm = () => {
 
   const history = useHistory();
+  const userInfo = useContext(UserContext);
 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -25,6 +27,7 @@ const SignUpForm = () => {
     const { user } = await registerUser(userDetails);
 
     if (user) {
+      userInfo.userLoggedIn(user);
       history.push("/pages/dashboard");
     }
   }
