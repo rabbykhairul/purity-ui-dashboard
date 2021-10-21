@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import Input from "../commons/Input";
 import Button from "../commons/Button";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { loginUser } from "../../services/authService";
 
 const WELCOME_MESSAGE = "Welcome Back";
 const LOGIN_HINT = "Enter your email and password to sign in";
 
 const SignInForm = () => {
+
+  const history = useHistory();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +19,11 @@ const SignInForm = () => {
   const validateFormData = () => email && password;
 
   const handleUserLogin = async () => {
-    const result = await loginUser(email, password);
+    const { user } = await loginUser(email, password);
+
+    if (user) {
+      history.push("/pages/dashboard");
+    }
   }
 
   const handleSubmit = (e) => {
