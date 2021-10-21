@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BsFacebook, BsApple, BsGoogle } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { registerUser } from "../../services/authService";
 
 import Button from "../commons/Button";
@@ -9,6 +9,8 @@ import Input from "../commons/Input";
 const FORM_TITLE = "Register with";
 
 const SignUpForm = () => {
+
+  const history = useHistory();
 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -20,7 +22,11 @@ const SignUpForm = () => {
 
   const handleUserRegistration = async () => {
     const userDetails = { fullName, email, password };
-    const result = await registerUser(userDetails);
+    const { user } = await registerUser(userDetails);
+
+    if (user) {
+      history.push("/pages/dashboard");
+    }
   }
 
   const handleSubmit = async (e) => {
