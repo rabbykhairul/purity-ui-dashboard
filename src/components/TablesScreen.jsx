@@ -74,12 +74,12 @@ const projects = [
 ]
 
 const TablesScreen = () => {
-  const { authors } = useContext(AuthorContext);
+  const { authors, authorSelected } = useContext(AuthorContext);
 
   return (
     <div className="tables-screen">
       <div>
-        <Table items={authors} renderHeader={renderAutherTableHeader} renderColumnHeader={renderAutherTableColumnHeaders} renderRow={renderAutherTableRow} />
+        <Table items={authors} renderHeader={renderAutherTableHeader} renderColumnHeader={renderAutherTableColumnHeaders} renderRow={renderAutherTableRow} onRowClick={authorSelected} />
         <Table items={projects} renderHeader={renderProjectTableHeader} renderColumnHeader={renderProjectTableColumnHeaders} renderRow={renderProjectTableRow} />
       </div>
       <PageFooter className="footer-with-vertical-gap" />

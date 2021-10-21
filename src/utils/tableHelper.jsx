@@ -81,14 +81,14 @@ export const renderAutherTableColumnHeaders = () => {
   )
 }
 
-export const renderAutherTableRow = (autherDetails, key) => {
+export const renderAutherTableRow = (autherDetails, key, onClick = () => {}) => {
   return (
     <tr key={key} className="data-row">
       <td className="first-column">{renderAutherBasicInfo(autherDetails)}</td>
       <td className="middle-column">{renderAutherRoleInfo(autherDetails)}</td>
       <td className="middle-column">{renderAutherStatus(autherDetails)}</td>
       <td className="middle-column">{renderJoiningDate(autherDetails)}</td>
-      <td className="last-column"><Button className="btn-plain color-gray-500" >Edit</Button></td>
+      <td className="last-column"><Button className="btn-plain color-gray-500" onClick={() => onClick(autherDetails)} >Edit</Button></td>
     </tr>
   )
 }
