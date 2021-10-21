@@ -32,3 +32,5 @@ export const loginUser = async (email, password) => {
     return { user: null };
   }
 }
+
+export const logoutUser = () => setBearerToken("");
