@@ -51,7 +51,7 @@ const AuthorForm = () => {
   return (
     <form className="overlay-form" onSubmit={handleSubmit}>
       <Input title="Author Name" name="fullName" placeholder="Enter author's name" value={fullName} onChange={(e) => setFullName(e.target.value)} />
-      <Input title="Athor Email" name="email" placeholder="Enter email address" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <Input title="Author Email" name="email" placeholder="Enter email address" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
       <Input title="Role" name="role" placeholder="eg. Manager" value={role} onChange={(e) => setRole(e.target.value)} />
       <Input title="Level" name="level" placeholder="eg. Organization" value={level} onChange={(e) => setLevel(e.target.value)} />
       <Input title="Status" name="status" placeholder="eg. Online" value={status} onChange={(e) => setStatus(e.target.value)} />
