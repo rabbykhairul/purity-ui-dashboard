@@ -95,12 +95,17 @@ table .middle-column {
   width: 18%;
 }
 
+.table-header-box,
 .column-header-row,
 .data-row {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.table-header-box {
+  align-items: flex-start;
 }
 
 .column-header-row {
