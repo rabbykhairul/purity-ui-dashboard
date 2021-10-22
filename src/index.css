@@ -47,6 +47,53 @@ label {
   margin-bottom: 0.45vw;
 }
 
+input[type=checkbox] {
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggler {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  margin-bottom: 0.35vw;
+}
+
+.toggle-label {
+  display: flex;
+  width: 2vw;
+  height: 1.1vw;
+  position: relative;
+  transition: transform 0.75s ease-in-out;
+  transform-origin: 50% 50%;
+  cursor: pointer;
+  border-radius: 0.5vw;
+  margin-right: 0.5vw;
+}
+
+.toggle-label:before {
+  transition: transform 0.75s ease;
+  transition-delay: 0.25s;
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0.7vw;
+  height: 0.7vw;
+  background-color: white;
+  border-radius: 50%;
+  top: 0.18vw;
+  left: 0.2vw;
+}
+
+input[type=checkbox]:checked + .toggle-label:before {
+  transform: translateX(0.85vw);
+}
+
+.toggler span {
+  font-size: 0.75vw;
+}
+
 input[type=text],
 input[type=email],
 input[type=password],
@@ -306,7 +353,7 @@ footer span {
 }
 
 .sign-in-form button {
-  margin: 1.1vw 0;
+  margin: 0.51vw 0;
 }
 
 .sign-in-form .form-footer {
@@ -342,13 +389,16 @@ footer span {
 .sign-up-form {
   position: absolute;
   width: 20%;
-  height: 60%;
+  height: 63%;
   padding: 1.25vw 1.5vw;
   background-color: white;
   box-shadow: 0px 7px 23px rgba(0, 0, 0, 0.05);
   border-radius: 1vw;
   left: 40.5%;
   top: 28%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .sign-up-form h2 {
