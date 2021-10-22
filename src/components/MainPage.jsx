@@ -9,6 +9,12 @@ import DashboardScreen from "./DashboardScreen";
 import TablesScreen from "./TablesScreen";
 import Button from "./commons/Button";
 import AuthorForm from "./forms/AuthorForm";
+import { getProjects } from "../services/projectService";
+import ProjectForm from "./forms/ProjectForm";
+import ProjectContext from "../contexts/ProjectContext";
+
+const TYPE_PROJECT = "project";
+const TYPE_AUTHOR = "author";
 
 const MainPage = () => {
   const location = useLocation();
@@ -16,15 +22,25 @@ const MainPage = () => {
   const [authors, setAuthors] = useState([]);
   const [selectedAuthor, setSelectedAuthor] = useState(null);
 
+  const [projects, setProjects] = useState([]);
+  const [selectedProject, setSelectedProject] = useState(null);
+
   const [displaySideOverlay, setDisplaySideOverlay] = useState(false);
+  const [overlayFor, setOverlayFor] = useState(TYPE_AUTHOR);
 
   useEffect(() => {
     loadAuthors();
+    loadProjects();
   }, [])
 
   const loadAuthors = async () => {
     const authors = await getAuthors();
     if (authors) setAuthors(authors);
+  }
+
+  const loadProjects = async () => {
+    const projects = await getProjects();
+    if (projects) setProjects(projects);
   }
 
   const addNewAuthor = (author) => {
@@ -38,6 +54,7 @@ const MainPage = () => {
   }
   const storeSelectedAuthor = (author) => {
     setSelectedAuthor(author);
+    setOverlayFor(TYPE_AUTHOR);
     setDisplaySideOverlay(true);
   };
   const updateAuthor = (author) => {
@@ -50,6 +67,35 @@ const MainPage = () => {
   }
   const createNewAuthor = () => {
     setSelectedAuthor(null);
+    setOverlayFor(TYPE_AUTHOR);
+    setDisplaySideOverlay(true);
+  }
+
+  const addNewProject = (project) => {
+    setProjects([ project, ...projects ]);
+    setDisplaySideOverlay(false);
+  };
+  const removeDeletedProject = (project) => {
+    setProjects(projects.filter(p => p._id !== project._id));
+    setSelectedProject(null);
+    setDisplaySideOverlay(false);
+  }
+  const storeSelectedProject = (project) => {
+    setSelectedProject(project);
+    setOverlayFor(TYPE_PROJECT);
+    setDisplaySideOverlay(true);
+  };
+  const updateProject = (project) => {
+    const allProjects = [ ...projects ];
+    const targetProjectIdx = allProjects.findIndex(p => p._id === project._id);
+    allProjects[targetProjectIdx] = project;
+
+    setProjects(allProjects);
+    setDisplaySideOverlay(false);
+  }
+  const createNewProject = () => {
+    setSelectedProject(null);
+    setOverlayFor(TYPE_PROJECT);
     setDisplaySideOverlay(true);
   }
 
@@ -79,7 +125,8 @@ const MainPage = () => {
       return (
         <div className="right-side-overlay bg-white">
           {renderOverlayCloseButton()}
-          <AuthorForm />
+          {overlayFor === TYPE_AUTHOR && <AuthorForm />}
+          {overlayFor === TYPE_PROJECT && <ProjectForm /> }
         </div>
       );
     else return null;
@@ -90,8 +137,10 @@ const MainPage = () => {
       <TopBar />
       <LeftSideBar />
       <AuthorContext.Provider value={{ authors, selectedAuthor, createNewAuthor, authorSelected: storeSelectedAuthor, authorCreated: addNewAuthor, authorDeleted: removeDeletedAuthor, authorUpdated: updateAuthor }}>
-        {renderContents()}
-        {renderRightSideOverlay()}
+        <ProjectContext.Provider value={{ projects, selectedProject, createNewProject, projectSelected: storeSelectedProject, projectCreated: addNewProject, projectDeleted: removeDeletedProject, projectUpdated: updateProject}} >
+          {renderContents()}
+          {renderRightSideOverlay()}
+        </ProjectContext.Provider>
       </AuthorContext.Provider>
     </div>
   )

@@ -55,13 +55,13 @@ const renderProjectBasicInfo = (projectDetails) => {
 }
 
 const renderProjectCompletionPercentage = (projectDetails) => {
-  const { completionParcentage } = projectDetails;
+  const { completionPercentage } = projectDetails;
 
   return (
     <>
-    <p className="project-table-text color-teal-300">{projectDetails.completionParcentage}%</p>
+    <p className="project-table-text color-teal-300">{projectDetails.completionPercentage}%</p>
     <div className="progress-bar-container bg-gray-200">
-      <div className="progress-indicator bg-teal-300" style={{ width: `${completionParcentage}%` }}></div>
+      <div className="progress-indicator bg-teal-300" style={{ width: `${completionPercentage}%` }}></div>
     </div>
     </>
   )
@@ -103,7 +103,7 @@ export const renderAutherTableRow = (autherDetails, key, onClick = () => {}) => 
   )
 }
 
-export const renderProjectTableHeader = () => {
+export const renderProjectTableHeader = (onAddNewClick = () => {}) => {
   return (
     <div className="table-header-box">
       <div className="project-table-header">
@@ -113,7 +113,7 @@ export const renderProjectTableHeader = () => {
           <p className="color-gray-400"><span>30 done</span> this month</p>
         </div>
       </div>
-      <Button className="btn-plain color-gray-400">
+      <Button className="btn-plain color-gray-400" onClick={onAddNewClick}>
         <MdCreateNewFolder />
         <span>Add new</span>
       </Button>
@@ -133,14 +133,14 @@ export const renderProjectTableColumnHeaders = () => {
   )
 }
 
-export const renderProjectTableRow = (projectDetails, key) => {
+export const renderProjectTableRow = (projectDetails, key, onClick = () => {}) => {
   return (
     <tr key={key} className="data-row project-table-row color-gray-700">
       <td className="first-column">{renderProjectBasicInfo(projectDetails)}</td>
       <td className="middle-column"><p className="project-table-text">{projectDetails.budget ? "$" + projectDetails.budget : "Not Set"}</p></td>
       <td className="middle-column"><p className="project-table-text">{projectDetails.status}</p></td>
       <td className="middle-column">{renderProjectCompletionPercentage(projectDetails)}</td>
-      <td className="last-column"><Button className="btn-plain color-gray-500" ><BsThreeDotsVertical /></Button></td>
+      <td className="last-column"><Button className="btn-plain color-gray-500" onClick={() => onClick(projectDetails)} ><BsThreeDotsVertical /></Button></td>
     </tr>
   );
 }
