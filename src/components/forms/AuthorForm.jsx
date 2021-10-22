@@ -18,7 +18,7 @@ const AuthorForm = () => {
   const [joiningDate, setJoiningDate] = useState(selectedAuthor?.joiningDate.split("T")[0] || "");
   const [profilePic, setProfilePic] = useState(null);
 
-  const validateFormData = () => fullName && email && (selectedAuthor || profilePic);
+  const validateFormData = () => fullName && email;
 
   const generatePayload = () => {
     const formData = new FormData();
