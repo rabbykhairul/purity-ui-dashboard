@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import Input from "../commons/Input";
+import Checkbox from "../commons/Checkbox";
 import Button from "../commons/Button";
 import { Link, useHistory } from "react-router-dom";
 import { loginUser } from "../../services/authService";
@@ -58,6 +59,7 @@ const SignInForm = () => {
       {renderWelcomeMessage()}
       <Input title="Email" name="email" placeholder="Your email address" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
       <Input title="Password" name="password" placeholder="Your password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <Checkbox />
       <Button type="submit" className={formSubmitted ? "tracking-out-expand" : ""} disabled={formSubmitted} >{formSubmitted ? "Signing you in..." : "SIGN IN"}</Button>
       {renderFormFooter()}
     </form>
