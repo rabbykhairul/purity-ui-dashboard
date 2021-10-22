@@ -8,6 +8,7 @@ import TopBar from "./commons/TopBar";
 import DashboardScreen from "./DashboardScreen";
 import TablesScreen from "./TablesScreen";
 import Button from "./commons/Button";
+import AuthorForm from "./forms/AuthorForm";
 
 const MainPage = () => {
   const location = useLocation();
@@ -32,7 +33,10 @@ const MainPage = () => {
   }
 
   const addNewAuthor = (author) => setAuthors([ author, ...authors ]);
-  const removeDeletedAuthor = (author) => setAuthors(authors.filter(a => a._id !== author._id));
+  const removeDeletedAuthor = (author) => {
+    setAuthors(authors.filter(a => a._id !== author._id));
+    setSelectedAuthor(null);
+  }
   const storeSelectedAuthor = (author) => setSelectedAuthor(author);
   const updateAuthor = (author) => {
     const allAuthors = [ ...authors ];
@@ -63,6 +67,7 @@ const MainPage = () => {
       return (
         <div className="right-side-overlay bg-white">
           {renderOverlayCloseButton()}
+          <AuthorForm />
         </div>
       );
     else return null;
