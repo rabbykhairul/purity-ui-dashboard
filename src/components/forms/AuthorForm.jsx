@@ -4,6 +4,7 @@ import Input from "../commons/Input";
 import Button from "../commons/Button";
 import AuthorContext from "../../contexts/AuthorContext";
 import { createAuthor, deleteAuthor, updateAuthor } from "../../services/authorService";
+import FileInput from "../commons/FileInput";
 
 const AuthorForm = () => {
 
@@ -15,11 +16,26 @@ const AuthorForm = () => {
   const [level, setLevel] = useState(selectedAuthor?.level || "");
   const [status, setStatus] = useState(selectedAuthor?.status || "");
   const [joiningDate, setJoiningDate] = useState(selectedAuthor?.joiningDate.split("T")[0] || "");
+  const [profilePic, setProfilePic] = useState(null);
 
-  const validateFormData = () => fullName && email;
+  const validateFormData = () => fullName && email && (selectedAuthor || profilePic);
+
+  const generatePayload = () => {
+    const formData = new FormData();
+
+    formData.append("fullName", fullName);
+    formData.append("email", email);
+    formData.append("role", role);
+    formData.append("level", level);
+    formData.append("status", status);
+    formData.append("joiningDate", joiningDate);
+    if (profilePic) formData.append("profilePic", profilePic, profilePic?.name);
+
+    return formData;
+  }
 
   const updateAuthorDetails = async () => {
-    const payload = { fullName, email, role, level, status, joiningDate };
+    const payload = generatePayload();
     const updatedAuthor = await updateAuthor(selectedAuthor._id, payload)
     if (updatedAuthor) {
       authorUpdated(updatedAuthor);
@@ -27,7 +43,7 @@ const AuthorForm = () => {
   }
 
   const createNewAuthor = async () => {
-    const payload = { fullName, email, role, level, status, joiningDate };
+    const payload = generatePayload();
     const newAuthor = await createAuthor(payload)
 
     if (newAuthor) authorCreated(newAuthor);
@@ -56,6 +72,8 @@ const AuthorForm = () => {
       <Input title="Level" name="level" placeholder="eg. Organization" value={level} onChange={(e) => setLevel(e.target.value)} />
       <Input title="Status" name="status" placeholder="eg. Online" value={status} onChange={(e) => setStatus(e.target.value)} />
       <Input title="Joining Date" name="joiningDate" placeholder="2021-01-15" type="date" value={joiningDate} onChange={(e) => setJoiningDate(e.target.value)} />
+      <FileInput id="author-pic" className="file-input" displayTitle={profilePic ? profilePic.name : "Please select a profile picture"} accept="image/*" onChange={(e) => setProfilePic(e.target?.files?.[0])} 
+      />
       <div className="btn-container">
         {selectedAuthor && 
           <Button className="bg-red-500" onClick={handleDelete} >
