@@ -7,6 +7,7 @@ const AuthorContext = createContext({
   authorCreated: (author) => author,
   authorUpdated: (author) => author,
   authorDeleted: (author) => author,
+  createNewAuthor: () => {}
 });
 
 export default AuthorContext;
