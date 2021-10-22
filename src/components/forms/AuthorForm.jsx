@@ -3,11 +3,11 @@ import { FaDatabase, FaTrash } from "react-icons/fa";
 import Input from "../commons/Input";
 import Button from "../commons/Button";
 import AuthorContext from "../../contexts/AuthorContext";
-import { deleteAuthor, updateAuthor } from "../../services/authorService";
+import { createAuthor, deleteAuthor, updateAuthor } from "../../services/authorService";
 
 const AuthorForm = () => {
 
-  const { selectedAuthor, authorUpdated, authorDeleted } = useContext(AuthorContext);
+  const { selectedAuthor, authorCreated, authorUpdated, authorDeleted } = useContext(AuthorContext);
 
   const [fullName, setFullName] = useState(selectedAuthor?.fullName || "");
   const [email, setEmail] = useState(selectedAuthor?.email || "");
@@ -26,12 +26,20 @@ const AuthorForm = () => {
     } else authorUpdated(selectedAuthor);
   }
 
+  const createNewAuthor = async () => {
+    const payload = { fullName, email, role, level, status, joiningDate };
+    const newAuthor = await createAuthor(payload)
+
+    if (newAuthor) authorCreated(newAuthor);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const formValidationPassed = validateFormData();
 
     if (formValidationPassed) {
-      updateAuthorDetails();
+      if (selectedAuthor) updateAuthorDetails();
+      else createNewAuthor();
     }
   }
 
@@ -49,10 +57,12 @@ const AuthorForm = () => {
       <Input title="Status" name="status" placeholder="eg. Online" value={status} onChange={(e) => setStatus(e.target.value)} />
       <Input title="Joining Date" name="joiningDate" placeholder="2021-01-15" type="date" value={joiningDate} onChange={(e) => setJoiningDate(e.target.value)} />
       <div className="btn-container">
-        <Button className="bg-red-500" onClick={handleDelete} >
-          <FaTrash />
-          <span>Delete</span>
-        </Button>
+        {selectedAuthor && 
+          <Button className="bg-red-500" onClick={handleDelete} >
+            <FaTrash />
+            <span>Delete</span>
+          </Button>
+        }
         <Button className="bg-green-400" type="submit" >
           <FaDatabase />
           <span>Save</span>
