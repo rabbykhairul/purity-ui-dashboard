@@ -6,6 +6,7 @@ import { registerUser } from "../../services/authService";
 
 import Button from "../commons/Button";
 import Input from "../commons/Input";
+import Checkbox from "../commons/Checkbox";
 
 const FORM_TITLE = "Register with";
 
@@ -74,6 +75,7 @@ const SignUpForm = () => {
       <Input title="Name" placeholder="Your full name" name="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} />
       <Input title="Email" placeholder="Your email address" name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
       <Input title="Password" placeholder="Your password" name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <Checkbox />
       <Button type="submit" onClick={handleSubmit} disabled={formSubmitted} className={formSubmitted ? "tracking-out-expand" : ""} >{ formSubmitted ? "Signing You Up..." : "Sign Up"}</Button>
       {renderFormFooter()}
     </form>
