@@ -51,10 +51,12 @@ const renderJoiningDate = (autherDetails) => {
 }
 
 const renderProjectBasicInfo = (projectDetails) => {
-  const { title } = projectDetails;
+  const { title, projectLogo } = projectDetails;
   return (
     <div className="project-info">
-      <div className="project-logo-container bg-gray-300"></div>
+      <div className="project-logo-container bg-gray-300">
+        {projectLogo && <img src={projectLogo} alt="" />}
+      </div>
       <p className="project-table-text">{title}</p>
     </div>
   )
