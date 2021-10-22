@@ -9,6 +9,7 @@ import DashboardScreen from "./DashboardScreen";
 import TablesScreen from "./TablesScreen";
 import Button from "./commons/Button";
 import AuthorForm from "./forms/AuthorForm";
+import { getProjects } from "../services/projectService";
 
 const MainPage = () => {
   const location = useLocation();
@@ -16,15 +17,24 @@ const MainPage = () => {
   const [authors, setAuthors] = useState([]);
   const [selectedAuthor, setSelectedAuthor] = useState(null);
 
+  const [projects, setProjects] = useState([]);
+  const [selectedProject, setSelectedProject] = useState(null);
+
   const [displaySideOverlay, setDisplaySideOverlay] = useState(false);
 
   useEffect(() => {
     loadAuthors();
+    loadProjects();
   }, [])
 
   const loadAuthors = async () => {
     const authors = await getAuthors();
     if (authors) setAuthors(authors);
+  }
+
+  const loadProjects = async () => {
+    const projects = await getProjects();
+    if (projects) setProjects(projects);
   }
 
   const addNewAuthor = (author) => {
