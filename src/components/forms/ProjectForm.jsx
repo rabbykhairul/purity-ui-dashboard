@@ -3,11 +3,13 @@ import { FaDatabase, FaTrash } from "react-icons/fa";
 import Input from "../commons/Input";
 import FileInput from "../commons/FileInput";
 import Button from "../commons/Button";
+import UserContext from "../../contexts/UserContext";
 import ProjectContext from "../../contexts/ProjectContext";
 import { createProject, deleteProject, updateProject } from "../../services/projectService";
 
 const ProjectForm = () => {
 
+  const { user } = useContext(UserContext);
   const { selectedProject, projectCreated, projectUpdated, projectDeleted } = useContext(ProjectContext);
 
   const [title, setTitle] = useState(selectedProject?.title || "");
@@ -32,7 +34,7 @@ const ProjectForm = () => {
 
   const updateProjectDetails = async () => {
     const payload = generatePayload();
-    const updatedProject = await updateProject(selectedProject._id, payload)
+    const updatedProject = await updateProject(selectedProject._id, payload, user.token)
     if (updatedProject) {
       projectUpdated(updatedProject);
     } else projectUpdated(selectedProject);
@@ -40,7 +42,7 @@ const ProjectForm = () => {
 
   const createNewProject = async () => {
     const payload = generatePayload();
-    const newProject = await createProject(payload)
+    const newProject = await createProject(payload, user.token)
 
     if (newProject) projectCreated(newProject);
   }
@@ -56,7 +58,7 @@ const ProjectForm = () => {
   }
 
   const handleDelete = () => {
-    deleteProject(selectedProject._id);
+    deleteProject(selectedProject._id, user.token);
     projectDeleted(selectedProject);
   }
 
