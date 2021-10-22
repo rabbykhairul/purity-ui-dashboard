@@ -13,6 +13,16 @@ export const getAuthors = async () => {
   }
 }
 
+export const createAuthor = async (payload) => {
+  try {
+    const { data } = await http.post(AUTHOR_API_ENDPOINT, payload);
+    return data.author;
+  } catch (err) {
+    console.log("Error while deleting authors: ", err);
+    return null;
+  }
+}
+
 export const deleteAuthor = async (authorId) => {
   try {
     await http.delete(`${AUTHOR_API_ENDPOINT}/${authorId}`);
