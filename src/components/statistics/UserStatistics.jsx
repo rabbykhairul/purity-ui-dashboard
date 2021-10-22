@@ -1,5 +1,5 @@
 import React from "react";
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, YAxis, ResponsiveContainer } from 'recharts';
 import { IoWallet } from "react-icons/io5";
 import { IoIosRocket } from "react-icons/io";
 import { MdShoppingCart } from "react-icons/md";
