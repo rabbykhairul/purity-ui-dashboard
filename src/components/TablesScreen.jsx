@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import AuthorContext from "../contexts/AuthorContext";
 import { renderAutherTableColumnHeaders, renderAutherTableHeader, renderAutherTableRow, renderProjectTableColumnHeaders, renderProjectTableHeader, renderProjectTableRow } from "../utils/tableHelper";
 import PageFooter from "./commons/PageFooter";
 import Table from "./tables/Table";
@@ -73,10 +74,12 @@ const projects = [
 ]
 
 const TablesScreen = () => {
+  const { authors, authorSelected, createNewAuthor } = useContext(AuthorContext);
+
   return (
     <div className="tables-screen">
       <div>
-        <Table items={authors} renderHeader={renderAutherTableHeader} renderColumnHeader={renderAutherTableColumnHeaders} renderRow={renderAutherTableRow} />
+        <Table items={authors} renderHeader={renderAutherTableHeader} onAddNewClick={createNewAuthor} renderColumnHeader={renderAutherTableColumnHeaders} renderRow={renderAutherTableRow} onRowClick={authorSelected} />
         <Table items={projects} renderHeader={renderProjectTableHeader} renderColumnHeader={renderProjectTableColumnHeaders} renderRow={renderProjectTableRow} />
       </div>
       <PageFooter className="footer-with-vertical-gap" />

@@ -1,6 +1,8 @@
 import React from "react";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { RiUserAddFill } from "react-icons/ri";
+import { MdCreateNewFolder } from "react-icons/md";
 import Button from "../components/commons/Button";
 
 const isAutherOnline = (status) => status.toLowerCase() === "online";
@@ -65,8 +67,16 @@ const renderProjectCompletionPercentage = (projectDetails) => {
   )
 }
 
-export const renderAutherTableHeader = () => {
-  return <h2 className="color-gray-700">Authors Table</h2>;
+export const renderAutherTableHeader = (onAddNewClick = () => {}) => {
+  return (
+    <div className="table-header-box">
+      <h2 className="color-gray-700">Authors Table</h2>
+      <Button className="btn-plain color-gray-400" onClick={onAddNewClick}>
+        <RiUserAddFill />
+        <span>Add new</span>
+      </Button>
+    </div>
+  );
 }
 
 export const renderAutherTableColumnHeaders = () => {
@@ -81,26 +91,32 @@ export const renderAutherTableColumnHeaders = () => {
   )
 }
 
-export const renderAutherTableRow = (autherDetails, key) => {
+export const renderAutherTableRow = (autherDetails, key, onClick = () => {}) => {
   return (
     <tr key={key} className="data-row">
       <td className="first-column">{renderAutherBasicInfo(autherDetails)}</td>
       <td className="middle-column">{renderAutherRoleInfo(autherDetails)}</td>
       <td className="middle-column">{renderAutherStatus(autherDetails)}</td>
       <td className="middle-column">{renderJoiningDate(autherDetails)}</td>
-      <td className="last-column"><Button className="btn-plain color-gray-500" >Edit</Button></td>
+      <td className="last-column"><Button className="btn-plain color-gray-500" onClick={() => onClick(autherDetails)} >Edit</Button></td>
     </tr>
   )
 }
 
 export const renderProjectTableHeader = () => {
   return (
-    <div className="project-table-header">
-      <h2 className="color-gray-700">Projects</h2>
-      <div style={{ display: "flex", alignItems: "center", marginBottom: "1.35vw" }}>
-        <AiFillCheckCircle className="color-green-400 icon-mini" />
-        <p className="color-gray-400"><span>30 done</span> this month</p>
+    <div className="table-header-box">
+      <div className="project-table-header">
+        <h2 className="color-gray-700">Projects</h2>
+        <div style={{ display: "flex", alignItems: "center", marginBottom: "1.35vw" }}>
+          <AiFillCheckCircle className="color-green-400 icon-mini" />
+          <p className="color-gray-400"><span>30 done</span> this month</p>
+        </div>
       </div>
+      <Button className="btn-plain color-gray-400">
+        <MdCreateNewFolder />
+        <span>Add new</span>
+      </Button>
     </div>
   );
 }
