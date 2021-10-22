@@ -44,6 +44,7 @@ const MainPage = () => {
     allAuthors[targetAuthorIdx] = author;
 
     setAuthors(allAuthors);
+    setDisplaySideOverlay(false);
   }
 
   const renderContents = () => {

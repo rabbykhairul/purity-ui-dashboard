@@ -3,11 +3,11 @@ import { FaDatabase, FaTrash } from "react-icons/fa";
 import Input from "../commons/Input";
 import Button from "../commons/Button";
 import AuthorContext from "../../contexts/AuthorContext";
-import { deleteAuthor } from "../../services/authorService";
+import { deleteAuthor, updateAuthor } from "../../services/authorService";
 
 const AuthorForm = () => {
 
-  const { selectedAuthor, authorDeleted } = useContext(AuthorContext);
+  const { selectedAuthor, authorUpdated, authorDeleted } = useContext(AuthorContext);
 
   const [fullName, setFullName] = useState(selectedAuthor?.fullName || "");
   const [email, setEmail] = useState(selectedAuthor?.email || "");
@@ -18,12 +18,20 @@ const AuthorForm = () => {
 
   const validateFormData = () => fullName && email;
 
+  const updateAuthorDetails = async () => {
+    const payload = { fullName, email, role, level, status, joiningDate };
+    const updatedAuthor = await updateAuthor(selectedAuthor._id, payload)
+    if (updatedAuthor) {
+      authorUpdated(updatedAuthor);
+    } else authorUpdated(selectedAuthor);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const formValidationPassed = validateFormData();
 
     if (formValidationPassed) {
-      
+      updateAuthorDetails();
     }
   }
 
