@@ -20,3 +20,13 @@ export const deleteAuthor = async (authorId) => {
     console.log("Error while deleting authors: ", err);
   }
 }
+
+export const updateAuthor = async (authorId, payload) => {
+  try {
+    const { data } = await http.put(`${AUTHOR_API_ENDPOINT}/${authorId}`, payload);
+    return data.author;
+  } catch (err) {
+    console.log("Error while updating author: ", err);
+    return null;
+  }
+}
