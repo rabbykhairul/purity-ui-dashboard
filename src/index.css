@@ -881,6 +881,12 @@ footer span {
   background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
 }
 
+.sales-graph-container {
+  width: 108.75%;
+  height: 80%;
+  margin-left: -5%;
+}
+
 .stat-header {
   margin: 1.65vw 0 2.15vw 0;
 }
@@ -928,6 +934,7 @@ footer span {
 
 .sales-statistics-container .stat-header {
   margin-top: 0.3vw;
+  margin-bottom: 1.25vw;
 }
 
 .tracking-out-expand {
