@@ -4,7 +4,6 @@ import UserContext from "./contexts/UserContext";
 import MainPage from "./components/MainPage";
 import SignInScreen from "./components/SignInScreen";
 import SignUpScreen from "./components/SignUpScreen";
-import { logoutUser } from "./services/authService";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -12,7 +11,6 @@ function App() {
   const storeUserInfo = (user) => setUser(user);
   const destroyUserSession = () => {
     setUser(null);
-    logoutUser();
   }
 
   return (
