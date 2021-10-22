@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useLocation } from "react-router";
 import { BsArrowRightCircleFill } from "react-icons/bs";
 import AuthorContext from "../contexts/AuthorContext";
@@ -12,12 +12,14 @@ import AuthorForm from "./forms/AuthorForm";
 import { getProjects } from "../services/projectService";
 import ProjectForm from "./forms/ProjectForm";
 import ProjectContext from "../contexts/ProjectContext";
+import UserContext from "../contexts/UserContext";
 
 const TYPE_PROJECT = "project";
 const TYPE_AUTHOR = "author";
 
 const MainPage = () => {
   const location = useLocation();
+  const userInfo = useContext(UserContext);
 
   const [authors, setAuthors] = useState([]);
   const [selectedAuthor, setSelectedAuthor] = useState(null);
@@ -120,8 +122,14 @@ const MainPage = () => {
     )
   }
 
+  const renderAccessDeniedMessage = () => {
+    return <div className="access-denied-container">
+      <p className="color-red-500">You need to be logged in to access this functionality!</p>
+    </div>
+  }
+
   const renderRightSideOverlay = () => {
-    if (displaySideOverlay)
+    if (displaySideOverlay && userInfo.user)
       return (
         <div className="right-side-overlay bg-white">
           {renderOverlayCloseButton()}
@@ -129,6 +137,13 @@ const MainPage = () => {
           {overlayFor === TYPE_PROJECT && <ProjectForm /> }
         </div>
       );
+    else if (displaySideOverlay) 
+        return (
+          <div className="right-side-overlay bg-white">
+            {renderOverlayCloseButton()}
+            {renderAccessDeniedMessage()}
+          </div>
+        )
     else return null;
   }
 
