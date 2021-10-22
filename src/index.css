@@ -946,6 +946,21 @@ footer span {
   margin-bottom: 1.25vw;
 }
 
+.access-denied-container {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.access-denied-container p {
+  font-size: 1.1vw;
+  font-weight: 700;
+  line-height: 165%;
+  text-align: center;
+}
+
 .tracking-out-expand {
 	-webkit-animation: tracking-out-expand 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
 	        animation: tracking-out-expand 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
