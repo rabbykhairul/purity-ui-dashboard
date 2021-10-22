@@ -24,11 +24,11 @@ const AuthorForm = () => {
     const formData = new FormData();
 
     formData.append("fullName", fullName);
-    formData.append("fullName", fullName);
-    formData.append("fullName", fullName);
-    formData.append("fullName", fullName);
-    formData.append("fullName", fullName);
-    formData.append("fullName", fullName);
+    formData.append("email", email);
+    formData.append("role", role);
+    formData.append("level", level);
+    formData.append("status", status);
+    formData.append("joiningDate", joiningDate);
     if (profilePic) formData.append("profilePic", profilePic, profilePic?.name);
 
     return formData;
