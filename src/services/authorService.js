@@ -10,7 +10,7 @@ export const getAuthors = async () => {
   } catch (err) {
     console.log("Error while fetching authors: ", err);
 
-    return { authors: null };
+    return null;
   }
 }
 
