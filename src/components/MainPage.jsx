@@ -11,6 +11,9 @@ import Button from "./commons/Button";
 import AuthorForm from "./forms/AuthorForm";
 import { getProjects } from "../services/projectService";
 
+const TYPE_PROJECT = "project";
+const TYPE_AUTHOR = "author";
+
 const MainPage = () => {
   const location = useLocation();
 
@@ -21,6 +24,7 @@ const MainPage = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   const [displaySideOverlay, setDisplaySideOverlay] = useState(false);
+  const [overlayFor, setOverlayFor] = useState(TYPE_AUTHOR);
 
   useEffect(() => {
     loadAuthors();
@@ -48,6 +52,7 @@ const MainPage = () => {
   }
   const storeSelectedAuthor = (author) => {
     setSelectedAuthor(author);
+    setOverlayFor(TYPE_AUTHOR);
     setDisplaySideOverlay(true);
   };
   const updateAuthor = (author) => {
@@ -60,6 +65,35 @@ const MainPage = () => {
   }
   const createNewAuthor = () => {
     setSelectedAuthor(null);
+    setOverlayFor(TYPE_AUTHOR);
+    setDisplaySideOverlay(true);
+  }
+
+  const addNewProject = (project) => {
+    setProjects([ project, ...projects ]);
+    setDisplaySideOverlay(false);
+  };
+  const removeDeletedProject = (project) => {
+    setProjects(projects.filter(p => p._id !== project._id));
+    setSelectedProject(null);
+    setDisplaySideOverlay(false);
+  }
+  const storeSelectedProject = (project) => {
+    setSelectedProject(project);
+    setOverlayFor(TYPE_PROJECT);
+    setDisplaySideOverlay(true);
+  };
+  const updateProject = (project) => {
+    const allProjects = [ ...projects ];
+    const targetProjectIdx = allProjects.findIndex(p => p._id === project._id);
+    allProjects[targetProjectIdx] = project;
+
+    setAuthors(allProjects);
+    setDisplaySideOverlay(false);
+  }
+  const createNewProject = () => {
+    setSelectedProject(null);
+    setOverlayFor(TYPE_PROJECT);
     setDisplaySideOverlay(true);
   }
 
@@ -89,7 +123,7 @@ const MainPage = () => {
       return (
         <div className="right-side-overlay bg-white">
           {renderOverlayCloseButton()}
-          <AuthorForm />
+          {overlayFor === TYPE_AUTHOR && <AuthorForm />}
         </div>
       );
     else return null;
