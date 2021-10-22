@@ -12,3 +12,11 @@ export const getAuthors = async () => {
     return { authors: null };
   }
 }
+
+export const deleteAuthor = async (authorId) => {
+  try {
+    await http.delete(`${AUTHOR_API_ENDPOINT}/${authorId}`);
+  } catch (err) {
+    console.log("Error while deleting authors: ", err);
+  }
+}
