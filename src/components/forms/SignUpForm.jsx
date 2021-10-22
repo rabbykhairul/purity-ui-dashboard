@@ -24,10 +24,10 @@ const SignUpForm = () => {
 
   const handleUserRegistration = async () => {
     const userDetails = { fullName, email, password };
-    const { user } = await registerUser(userDetails);
+    const { user, token } = await registerUser(userDetails);
 
     if (user) {
-      userInfo.userLoggedIn(user);
+      userInfo.userLoggedIn({ ...user, token });
       history.push("/pages/dashboard");
     }
   }

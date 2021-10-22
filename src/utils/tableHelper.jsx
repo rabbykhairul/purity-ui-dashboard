@@ -9,11 +9,13 @@ import Button from "../components/commons/Button";
 const isAutherOnline = (status) => status.toLowerCase() === "online";
 
 const renderAutherBasicInfo = (autherDetails) => {
-  const { fullName, email } = autherDetails;
+  const { fullName, email, profilePic } = autherDetails;
 
   return (
     <div className="auther-info">
-      <div className="auther-pic-container bg-gray-300"></div>
+      <div className="auther-pic-container bg-gray-300">
+        {profilePic && <img src={profilePic} alt="" />}
+      </div>
       <div>
         <h5 className="color-gray-700">{fullName}</h5>
         <p className="color-gray-400">{email}</p>
@@ -49,10 +51,12 @@ const renderJoiningDate = (autherDetails) => {
 }
 
 const renderProjectBasicInfo = (projectDetails) => {
-  const { title } = projectDetails;
+  const { title, projectLogo } = projectDetails;
   return (
     <div className="project-info">
-      <div className="project-logo-container bg-gray-300"></div>
+      <div className="project-logo-container bg-gray-300">
+        {projectLogo && <img src={projectLogo} alt="" />}
+      </div>
       <p className="project-table-text">{title}</p>
     </div>
   )

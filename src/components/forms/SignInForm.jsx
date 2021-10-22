@@ -21,10 +21,10 @@ const SignInForm = () => {
   const validateFormData = () => email && password;
 
   const handleUserLogin = async () => {
-    const { user } = await loginUser(email, password);
+    const { user, token } = await loginUser(email, password);
 
     if (user) {
-      userInfo.userLoggedIn(user);
+      userInfo.userLoggedIn({ ...user, token });
       history.push("/pages/dashboard");
     }
   }

@@ -2,12 +2,14 @@ import React, { useContext, useState } from "react";
 import { FaDatabase, FaTrash } from "react-icons/fa";
 import Input from "../commons/Input";
 import Button from "../commons/Button";
+import UserContext from "../../contexts/UserContext";
 import AuthorContext from "../../contexts/AuthorContext";
 import { createAuthor, deleteAuthor, updateAuthor } from "../../services/authorService";
 import FileInput from "../commons/FileInput";
 
 const AuthorForm = () => {
 
+  const { user } = useContext(UserContext)
   const { selectedAuthor, authorCreated, authorUpdated, authorDeleted } = useContext(AuthorContext);
 
   const [fullName, setFullName] = useState(selectedAuthor?.fullName || "");
@@ -18,7 +20,7 @@ const AuthorForm = () => {
   const [joiningDate, setJoiningDate] = useState(selectedAuthor?.joiningDate.split("T")[0] || "");
   const [profilePic, setProfilePic] = useState(null);
 
-  const validateFormData = () => fullName && email && (selectedAuthor || profilePic);
+  const validateFormData = () => fullName && email;
 
   const generatePayload = () => {
     const formData = new FormData();
@@ -36,7 +38,7 @@ const AuthorForm = () => {
 
   const updateAuthorDetails = async () => {
     const payload = generatePayload();
-    const updatedAuthor = await updateAuthor(selectedAuthor._id, payload)
+    const updatedAuthor = await updateAuthor(selectedAuthor._id, payload, user.token)
     if (updatedAuthor) {
       authorUpdated(updatedAuthor);
     } else authorUpdated(selectedAuthor);
@@ -44,7 +46,7 @@ const AuthorForm = () => {
 
   const createNewAuthor = async () => {
     const payload = generatePayload();
-    const newAuthor = await createAuthor(payload)
+    const newAuthor = await createAuthor(payload, user.token)
 
     if (newAuthor) authorCreated(newAuthor);
   }
@@ -60,7 +62,7 @@ const AuthorForm = () => {
   }
 
   const handleDelete = () => {
-    deleteAuthor(selectedAuthor._id);
+    deleteAuthor(selectedAuthor._id, user.token);
     authorDeleted(selectedAuthor);
   }
 
