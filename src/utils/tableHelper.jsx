@@ -42,9 +42,9 @@ const renderAutherStatus = (autherDetails) => {
 
 const renderJoiningDate = (autherDetails) => {
   const { joiningDate } = autherDetails;
-  const dateFormatString = "DD/MM/YYYY";
+  const dateFormatString = "DD/MM/YY";
   const formattedDateString = moment(joiningDate).format(dateFormatString);
-  
+
   return <p className="joining-date color-gray-700">{formattedDateString}</p>
 }
 
