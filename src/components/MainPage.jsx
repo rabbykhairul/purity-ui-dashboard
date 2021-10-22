@@ -22,22 +22,24 @@ const MainPage = () => {
     loadAuthors();
   }, [])
 
-  useEffect(() => {
-    if (selectedAuthor) setDisplaySideOverlay(true);
-    else setDisplaySideOverlay(false);
-  }, [selectedAuthor]);
-
   const loadAuthors = async () => {
     const authors = await getAuthors();
     if (authors) setAuthors(authors);
   }
 
-  const addNewAuthor = (author) => setAuthors([ author, ...authors ]);
+  const addNewAuthor = (author) => {
+    setAuthors([ author, ...authors ]);
+    setDisplaySideOverlay(false);
+  };
   const removeDeletedAuthor = (author) => {
     setAuthors(authors.filter(a => a._id !== author._id));
     setSelectedAuthor(null);
+    setDisplaySideOverlay(false);
   }
-  const storeSelectedAuthor = (author) => setSelectedAuthor(author);
+  const storeSelectedAuthor = (author) => {
+    setSelectedAuthor(author);
+    setDisplaySideOverlay(true);
+  };
   const updateAuthor = (author) => {
     const allAuthors = [ ...authors ];
     const targetAuthorIdx = allAuthors.findIndex(a => a._id === author._id);
@@ -45,6 +47,10 @@ const MainPage = () => {
 
     setAuthors(allAuthors);
     setDisplaySideOverlay(false);
+  }
+  const createNewAuthor = () => {
+    setSelectedAuthor(null);
+    setDisplaySideOverlay(true);
   }
 
   const renderContents = () => {
@@ -54,9 +60,14 @@ const MainPage = () => {
     return null;
   }
 
+  const closeTheOverlay = () => {
+    setSelectedAuthor(null);
+    setDisplaySideOverlay(false);
+  }
+
   const renderOverlayCloseButton = () => {
     return (
-      <Button className="bg-gray-light color-gray-500" onClick={() => setSelectedAuthor(null)}>
+      <Button className="bg-gray-light color-gray-500" onClick={closeTheOverlay}>
         <BsArrowRightCircleFill />
         <span>Cancel</span>
       </Button>
@@ -78,7 +89,7 @@ const MainPage = () => {
     <div className="page-container main-page bg-gray-light">
       <TopBar />
       <LeftSideBar />
-      <AuthorContext.Provider value={{ authors, selectedAuthor, authorSelected: storeSelectedAuthor, authorCreated: addNewAuthor, authorDeleted: removeDeletedAuthor, authorUpdated: updateAuthor }}>
+      <AuthorContext.Provider value={{ authors, selectedAuthor, createNewAuthor, authorSelected: storeSelectedAuthor, authorCreated: addNewAuthor, authorDeleted: removeDeletedAuthor, authorUpdated: updateAuthor }}>
         {renderContents()}
         {renderRightSideOverlay()}
       </AuthorContext.Provider>
