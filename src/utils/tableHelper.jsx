@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { RiUserAddFill } from "react-icons/ri";
@@ -41,7 +42,10 @@ const renderAutherStatus = (autherDetails) => {
 
 const renderJoiningDate = (autherDetails) => {
   const { joiningDate } = autherDetails;
-  return <p className="joining-date color-gray-700">{joiningDate}</p>
+  const dateFormatString = "DD/MM/YYYY";
+  const formattedDateString = moment(joiningDate).format(dateFormatString);
+  
+  return <p className="joining-date color-gray-700">{formattedDateString}</p>
 }
 
 const renderProjectBasicInfo = (projectDetails) => {
