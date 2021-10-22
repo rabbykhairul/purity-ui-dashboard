@@ -67,11 +67,11 @@ const renderProjectCompletionPercentage = (projectDetails) => {
   )
 }
 
-export const renderAutherTableHeader = () => {
+export const renderAutherTableHeader = (onAddNewClick = () => {}) => {
   return (
     <div className="table-header-box">
       <h2 className="color-gray-700">Authors Table</h2>
-      <Button className="btn-plain color-gray-400">
+      <Button className="btn-plain color-gray-400" onClick={onAddNewClick}>
         <RiUserAddFill />
         <span>Add new</span>
       </Button>
