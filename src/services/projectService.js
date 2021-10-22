@@ -10,7 +10,7 @@ export const getProjects = async () => {
   } catch (err) {
     console.log("Error while fetching projects: ", err);
 
-    return { projects: null };
+    return null;
   }
 }
 
