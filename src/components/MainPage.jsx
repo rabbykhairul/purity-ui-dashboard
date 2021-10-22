@@ -10,6 +10,8 @@ import TablesScreen from "./TablesScreen";
 import Button from "./commons/Button";
 import AuthorForm from "./forms/AuthorForm";
 import { getProjects } from "../services/projectService";
+import ProjectForm from "./forms/ProjectForm";
+import ProjectContext from "../contexts/ProjectContext";
 
 const TYPE_PROJECT = "project";
 const TYPE_AUTHOR = "author";
@@ -88,7 +90,7 @@ const MainPage = () => {
     const targetProjectIdx = allProjects.findIndex(p => p._id === project._id);
     allProjects[targetProjectIdx] = project;
 
-    setAuthors(allProjects);
+    setProjects(allProjects);
     setDisplaySideOverlay(false);
   }
   const createNewProject = () => {
@@ -124,6 +126,7 @@ const MainPage = () => {
         <div className="right-side-overlay bg-white">
           {renderOverlayCloseButton()}
           {overlayFor === TYPE_AUTHOR && <AuthorForm />}
+          {overlayFor === TYPE_PROJECT && <ProjectForm /> }
         </div>
       );
     else return null;
@@ -134,8 +137,10 @@ const MainPage = () => {
       <TopBar />
       <LeftSideBar />
       <AuthorContext.Provider value={{ authors, selectedAuthor, createNewAuthor, authorSelected: storeSelectedAuthor, authorCreated: addNewAuthor, authorDeleted: removeDeletedAuthor, authorUpdated: updateAuthor }}>
-        {renderContents()}
-        {renderRightSideOverlay()}
+        <ProjectContext.Provider value={{ projects, selectedProject, createNewProject, projectSelected: storeSelectedProject, projectCreated: addNewProject, projectDeleted: removeDeletedProject, projectUpdated: updateProject}} >
+          {renderContents()}
+          {renderRightSideOverlay()}
+        </ProjectContext.Provider>
       </AuthorContext.Provider>
     </div>
   )
